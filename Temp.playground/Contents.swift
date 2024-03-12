@@ -317,3 +317,12 @@ struct BillSplitter {
 
 var split: BillSplitter = BillSplitter()
 split.splitBy(subtotal : 120.0, numPeople: 5)
+
+//ARRAY
+
+var a:[Int] = [5, 21, 50, 87]
+print(a[0])
+
+a[0] = 100
+
+print(a[0])

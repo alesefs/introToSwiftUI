@@ -12,6 +12,7 @@
 		F0906A472B9E6BC700DAC4E8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F0906A462B9E6BC700DAC4E8 /* Assets.xcassets */; };
 		F0906A4A2B9E6BC700DAC4E8 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F0906A492B9E6BC700DAC4E8 /* Preview Assets.xcassets */; };
 		F0906A512B9E6FF100DAC4E8 /* SwiftUIComponentExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0906A502B9E6FF100DAC4E8 /* SwiftUIComponentExample.swift */; };
+		F0A990D22BA0E83500B9582C /* FruitArrayChallenger.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0A990D12BA0E83500B9582C /* FruitArrayChallenger.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,6 +22,7 @@
 		F0906A462B9E6BC700DAC4E8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F0906A492B9E6BC700DAC4E8 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		F0906A502B9E6FF100DAC4E8 /* SwiftUIComponentExample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIComponentExample.swift; sourceTree = "<group>"; };
+		F0A990D12BA0E83500B9582C /* FruitArrayChallenger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FruitArrayChallenger.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +60,7 @@
 				F0906A462B9E6BC700DAC4E8 /* Assets.xcassets */,
 				F0906A482B9E6BC700DAC4E8 /* Preview Content */,
 				F0906A502B9E6FF100DAC4E8 /* SwiftUIComponentExample.swift */,
+				F0A990D12BA0E83500B9582C /* FruitArrayChallenger.swift */,
 			);
 			path = introToSwiftUI;
 			sourceTree = "<group>";
@@ -143,6 +146,7 @@
 				F0906A512B9E6FF100DAC4E8 /* SwiftUIComponentExample.swift in Sources */,
 				F0906A452B9E6BC600DAC4E8 /* ContentView.swift in Sources */,
 				F0906A432B9E6BC600DAC4E8 /* introToSwiftUIApp.swift in Sources */,
+				F0A990D22BA0E83500B9582C /* FruitArrayChallenger.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
