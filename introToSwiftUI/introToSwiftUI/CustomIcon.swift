@@ -176,7 +176,7 @@ struct CustomIcon: View {
 #Preview {
     CustomIcon(
         icon: "binoculars.fill",
-        style: .Neutral(showShape: true),
+        style: .Custom(shapeColor: .purple, iconColor: .red, showShape: false),
         size: .Large
     )
 }
