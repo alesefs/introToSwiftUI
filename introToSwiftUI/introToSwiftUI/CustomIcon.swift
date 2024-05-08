@@ -434,9 +434,11 @@ struct CustomIcon_Previews: PreviewProvider {
                 VStack {
                     ForEach(CustomIconSize.allCases, id: \.self) { size in
                         VStack {
-                            HStack {
-                                ForEach(CustomIconStyle.allCases, id: \.self) { style in
-                                    CustomIcon(icon: "binoculars.fill", style: style, size: size)
+                            ScrollView(.horizontal) {
+                                HStack {
+                                    ForEach(CustomIconStyle.allCases, id: \.self) { style in
+                                        CustomIcon(icon: "binoculars.fill", style: style, size: size)
+                                    }
                                 }
                             }
                         }
