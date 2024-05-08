@@ -64,15 +64,15 @@ enum CustomIconStyle: Hashable {
         }
     }
     
-    static var allCases: [CustomIconStyle] {
-        return [
-            .Success, .Warning, .Error, .Info,
-            .Neutral(showShape: true),
-            .Neutral(showShape: false),
-            .Custom(shapeColor: .pink, iconColor: .black, showShape: true),
-            .Custom(shapeColor: .pink, iconColor: .pink, showShape: false),
-        ]
-    }
+//    static var allCases: [CustomIconStyle] {
+//        return [
+//            .Success, .Warning, .Error, .Info,
+//            .Neutral(showShape: true),
+//            .Neutral(showShape: false),
+//            .Custom(shapeColor: .pink, iconColor: .black, showShape: true),
+//            .Custom(shapeColor: .pink, iconColor: .pink, showShape: false),
+//        ]
+//    }
     
     /*case Success(shapeColor: Color = Color.green, iconColor: Color = Color.black, showShape: Bool = true)
     case Warning(shapeColor: Color = Color.yellow, iconColor: Color = Color.orange, showShape: Bool = true)
@@ -212,7 +212,7 @@ enum CustomIconSize: CaseIterable, Hashable {
     }
 }
 
-struct CustomIcon: View, Hashable {
+struct CustomIcon: View {
     
     var icon: String
     var style: CustomIconStyle
@@ -394,49 +394,63 @@ struct CustomIcon_Previews: PreviewProvider {
         ]
         
         VStack {
-            ScrollView(.horizontal) {
-                HStack {
-                    ForEach(arrayLarge, id: \.self) { list in
-                        CustomIcon(
-                            icon: list.icon,
-                            style: list.style,
-                            size: list.size
-                        )
-                    }
-                }
+//            ScrollView(.horizontal) {
+//                HStack {
+//                    ForEach(arrayLarge, id: \.self) { list in
+//                        CustomIcon(
+//                            icon: list.icon,
+//                            style: list.style,
+//                            size: list.size
+//                        )
+//                    }
+//                }
+//            }
+//            
+//            ScrollView(.horizontal) {
+//                HStack {
+//                    ForEach(arrayMedium, id: \.self) { list in
+//                        CustomIcon(
+//                            icon: list.icon,
+//                            style: list.style,
+//                            size: list.size
+//                        )
+//                    }
+//                }
+//            }
+//            
+//            ScrollView(.horizontal) {
+//                HStack {
+//                    ForEach(arraySmall, id: \.self) { list in
+//                        CustomIcon(
+//                            icon: list.icon,
+//                            style: list.style,
+//                            size: list.size
+//                        )
+//                    }
+//                }
+//            }
+            
+            var allCasesStyle: [CustomIconStyle] {
+                return [
+                    .Success, .Warning, .Error, .Info,
+                    .Neutral(showShape: true),
+                    .Neutral(showShape: false),
+                    .Custom(shapeColor: .pink, iconColor: .black, showShape: true),
+                    .Custom(shapeColor: .pink, iconColor: .pink, showShape: false),
+                ]
             }
             
-            ScrollView(.horizontal) {
-                HStack {
-                    ForEach(arrayMedium, id: \.self) { list in
-                        CustomIcon(
-                            icon: list.icon,
-                            style: list.style,
-                            size: list.size
-                        )
-                    }
-                }
-            }
-            
-            ScrollView(.horizontal) {
-                HStack {
-                    ForEach(arraySmall, id: \.self) { list in
-                        CustomIcon(
-                            icon: list.icon,
-                            style: list.style,
-                            size: list.size
-                        )
-                    }
-                }
+            var allCasesSize: [CustomIconSize] {
+                return [.Large, .Medium, .Small]
             }
             
             ScrollView(.vertical) {
                 VStack {
-                    ForEach(CustomIconSize.allCases, id: \.self) { size in
+                    ForEach(allCasesSize, id: \.self) { size in
                         VStack {
                             ScrollView(.horizontal) {
                                 HStack {
-                                    ForEach(CustomIconStyle.allCases, id: \.self) { style in
+                                    ForEach(allCasesStyle, id: \.self) { style in
                                         CustomIcon(icon: "binoculars.fill", style: style, size: size)
                                     }
                                 }
