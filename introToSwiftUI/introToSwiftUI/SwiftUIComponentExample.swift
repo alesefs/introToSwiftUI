@@ -32,8 +32,8 @@ struct SwiftUIComponentExample: View {
                             Image(systemName: "star.fill")
                             Image(systemName: "star.fill")
                             Image(systemName: "star.fill")
-                            Image(systemName: "star.fill")
                             Image(systemName: "star.leadinghalf.filled")
+                            Image(systemName: "star")
                         }
                         .foregroundColor(.orange)
                         
