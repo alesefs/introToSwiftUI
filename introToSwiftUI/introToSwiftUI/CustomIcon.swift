@@ -9,7 +9,62 @@ import SwiftUI
 
 
 enum CustomIconStyle {
-    case Success(shapeColor: Color = Color.green, iconColor: Color = Color.black, showShape: Bool = true)
+    case Success, Warning, Error, Info
+    case Neutral(showShape: Bool)
+    case Custom(shapeColor: Color, iconColor: Color, showShape: Bool)
+    
+    var shapeColor: Color {
+        switch self {
+            case .Success:
+                return Color.green
+            case .Warning:
+                return Color.yellow
+            case .Error:
+                return Color.red
+            case .Info:
+                return Color.blue
+            case .Neutral:
+                return Color.gray
+            case .Custom(shapeColor: let shapeColor, iconColor: _, showShape: _):
+                return shapeColor
+        }
+    }
+    
+    var iconColor: Color {
+        switch self {
+            case .Success:
+                return Color.black
+            case .Warning:
+                return Color.orange
+            case .Error:
+                return Color.yellow
+            case .Info:
+                return Color.white
+            case .Neutral:
+                return Color.black
+            case .Custom(shapeColor: _, iconColor: let iconColor, showShape: _):
+                return iconColor
+        }
+    }
+    
+    var showShape: Bool {
+        switch self {
+            case .Success:
+                return true
+            case .Warning:
+                return true
+            case .Error:
+                return true
+            case .Info:
+                return true
+            case .Neutral(showShape: let showShape):
+                return showShape
+            case .Custom(shapeColor: _, iconColor: _, showShape: let showShape):
+                return showShape
+        }
+    }
+    
+    /*case Success(shapeColor: Color = Color.green, iconColor: Color = Color.black, showShape: Bool = true)
     case Warning(shapeColor: Color = Color.yellow, iconColor: Color = Color.orange, showShape: Bool = true)
     case Error(shapeColor: Color = Color.red, iconColor: Color = Color.yellow, showShape: Bool = true)
     case Info(shapeColor: Color = Color.blue, iconColor: Color = Color.white, showShape: Bool = true)
@@ -65,7 +120,7 @@ enum CustomIconStyle {
         case .Custom(shapeColor: _, iconColor: _, showShape: let showShape):
                 return showShape
             }
-    }
+    }*/
 }
 
 /*
@@ -145,7 +200,6 @@ enum CustomIconSize: CaseIterable, Hashable {
             case .Small: return 4
         }
     }
-
 }
 
 struct CustomIcon: View {
@@ -176,7 +230,7 @@ struct CustomIcon: View {
 #Preview {
     CustomIcon(
         icon: "binoculars.fill",
-        style: .Custom(shapeColor: .purple, iconColor: .red, showShape: false),
+        style: .Error,
         size: .Large
     )
 }
