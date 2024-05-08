@@ -64,14 +64,15 @@ enum CustomIconStyle: Hashable {
         }
     }
     
-//    static var allCases: [CustomIconStyle] {
-//        return [
-//            .Success, .Warning, .Error, .Info,
-//            .Neutral(showShape: true),
-//            .Neutral(showShape: false),
-//            .Custom(shapeColor: _, iconColor: self, showShape: self)
-//        ]
-//    }
+    static var allCases: [CustomIconStyle] {
+        return [
+            .Success, .Warning, .Error, .Info,
+            .Neutral(showShape: true),
+            .Neutral(showShape: false),
+            .Custom(shapeColor: .pink, iconColor: .black, showShape: true),
+            .Custom(shapeColor: .pink, iconColor: .pink, showShape: false),
+        ]
+    }
     
     /*case Success(shapeColor: Color = Color.green, iconColor: Color = Color.black, showShape: Bool = true)
     case Warning(shapeColor: Color = Color.yellow, iconColor: Color = Color.orange, showShape: Bool = true)
@@ -246,6 +247,19 @@ struct CustomIcon: View, Hashable {
         style: .Error,
         size: .Large
     )
+    
+//    VStack {
+//        ForEach(CustomIconSize.allCases, id: \.self) { size in
+//            VStack {
+//                Text(size.rawValue)
+//                HStack {
+//                    ForEach(CustomIconStyle.allCases, id: \.self) { style in
+//                        CustomIcon(icon: "binoculars.fill", style: style, size: size)
+//                    }
+//                }
+//            }
+//        }
+//    }
 }
 
 struct CustomIcon_Previews: PreviewProvider {
@@ -412,6 +426,20 @@ struct CustomIcon_Previews: PreviewProvider {
                             style: list.style,
                             size: list.size
                         )
+                    }
+                }
+            }
+            
+            ScrollView(.vertical) {
+                VStack {
+                    ForEach(CustomIconSize.allCases, id: \.self) { size in
+                        VStack {
+                            HStack {
+                                ForEach(CustomIconStyle.allCases, id: \.self) { style in
+                                    CustomIcon(icon: "binoculars.fill", style: style, size: size)
+                                }
+                            }
+                        }
                     }
                 }
             }
