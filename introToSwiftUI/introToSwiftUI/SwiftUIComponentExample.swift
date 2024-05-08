@@ -58,6 +58,11 @@ struct SwiftUIComponentExample: View {
                 Rectangle()
                     .foregroundColor(.white)
                     .cornerRadius(15)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 15)
+//                            .inset(by: 4.0)
+                            .stroke(.blue, lineWidth: 2.0)
+                    )
                     .shadow(radius: 15)
             )
             .padding()
