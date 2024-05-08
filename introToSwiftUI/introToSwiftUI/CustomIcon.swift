@@ -8,7 +8,7 @@
 import SwiftUI
 
 
-enum CustomIconStyle {
+enum CustomIconStyle: Hashable {
     case Success, Warning, Error, Info
     case Neutral(showShape: Bool)
     case Custom(shapeColor: Color, iconColor: Color, showShape: Bool)
@@ -47,7 +47,7 @@ enum CustomIconStyle {
         }
     }
     
-    var showShape: Bool {
+    var showShaped: Bool {
         switch self {
             case .Success:
                 return true
@@ -63,6 +63,15 @@ enum CustomIconStyle {
                 return showShape
         }
     }
+    
+//    static var allCases: [CustomIconStyle] {
+//        return [
+//            .Success, .Warning, .Error, .Info,
+//            .Neutral(showShape: true),
+//            .Neutral(showShape: false),
+//            .Custom(shapeColor: _, iconColor: self, showShape: self)
+//        ]
+//    }
     
     /*case Success(shapeColor: Color = Color.green, iconColor: Color = Color.black, showShape: Bool = true)
     case Warning(shapeColor: Color = Color.yellow, iconColor: Color = Color.orange, showShape: Bool = true)
@@ -202,7 +211,7 @@ enum CustomIconSize: CaseIterable, Hashable {
     }
 }
 
-struct CustomIcon: View {
+struct CustomIcon: View, Hashable {
     
     var icon: String
     var style: CustomIconStyle
@@ -217,15 +226,19 @@ struct CustomIcon: View {
     var body: some View {
         Image(systemName: icon)
             .resizable()
-            .foregroundColor(style.iconColor)
             .frame(width: size.iconSize, height: size.iconSize)
-            .padding(.all, style.showShape ? size.padding : 0)
-            .frame(width: size.shapeSize, height: size.shapeSize)
-            .background(style.showShape ? style.shapeColor : Color.black.opacity(0.0))
+            .foregroundColor(style.iconColor)
+            .padding(.all, style.showShaped ? size.padding : 0)
+            .frame(
+                width: style.showShaped ? size.shapeSize : (size.shapeSize - size.padding),
+                height: style.showShaped ? size.shapeSize : (size.shapeSize - size.padding)
+            )
+            .background(style.showShaped ? style.shapeColor : .black.opacity(0.1))
             .cornerRadius(999)
             .aspectRatio(contentMode: .fit)
     }
 }
+
 
 #Preview {
     CustomIcon(
@@ -233,4 +246,175 @@ struct CustomIcon: View {
         style: .Error,
         size: .Large
     )
+}
+
+struct CustomIcon_Previews: PreviewProvider {
+    static var previews: some View {
+        var arrayLarge = [
+            CustomIcon(
+                icon: "binoculars.fill",
+                style: .Success,
+                size: .Large
+            ),
+            CustomIcon(
+                icon: "binoculars.fill",
+                style: .Warning,
+                size: .Large
+            ),
+            CustomIcon(
+                icon: "binoculars.fill",
+                style: .Error,
+                size: .Large
+            ),
+            CustomIcon(
+                icon: "binoculars.fill",
+                style: .Info,
+                size: .Large
+            ),
+            CustomIcon(
+                icon: "binoculars.fill",
+                style: .Neutral(showShape: true),
+                size: .Large
+            ),
+            CustomIcon(
+                icon: "binoculars.fill",
+                style: .Neutral(showShape: false),
+                size: .Large
+            ),
+            CustomIcon(
+                icon: "binoculars.fill",
+                style: .Custom(shapeColor: .black, iconColor: .pink, showShape: true),
+                size: .Large
+            ),
+            CustomIcon(
+                icon: "binoculars.fill",
+                style: .Custom(shapeColor: .pink, iconColor: .pink, showShape: false),
+                size: .Large
+            )
+        ]
+        
+        var arrayMedium = [
+            CustomIcon(
+                icon: "binoculars.fill",
+                style: .Success,
+                size: .Medium
+            ),
+            CustomIcon(
+                icon: "binoculars.fill",
+                style: .Warning,
+                size: .Medium
+            ),
+            CustomIcon(
+                icon: "binoculars.fill",
+                style: .Error,
+                size: .Medium
+            ),
+            CustomIcon(
+                icon: "binoculars.fill",
+                style: .Info,
+                size: .Medium
+            ),
+            CustomIcon(
+                icon: "binoculars.fill",
+                style: .Neutral(showShape: true),
+                size: .Medium
+            ),
+            CustomIcon(
+                icon: "binoculars.fill",
+                style: .Neutral(showShape: false),
+                size: .Medium
+            ),
+            CustomIcon(
+                icon: "binoculars.fill",
+                style: .Custom(shapeColor: .black, iconColor: .pink, showShape: true),
+                size: .Medium
+            ),
+            CustomIcon(
+                icon: "binoculars.fill",
+                style: .Custom(shapeColor: .pink, iconColor: .pink, showShape: false),
+                size: .Medium
+            )
+        ]
+        
+        var arraySmall = [
+            CustomIcon(
+                icon: "binoculars.fill",
+                style: .Success,
+                size: .Small
+            ),
+            CustomIcon(
+                icon: "binoculars.fill",
+                style: .Warning,
+                size: .Small
+            ),
+            CustomIcon(
+                icon: "binoculars.fill",
+                style: .Error,
+                size: .Small
+            ),
+            CustomIcon(
+                icon: "binoculars.fill",
+                style: .Info,
+                size: .Small
+            ),
+            CustomIcon(
+                icon: "binoculars.fill",
+                style: .Neutral(showShape: true),
+                size: .Small
+            ),
+            CustomIcon(
+                icon: "binoculars.fill",
+                style: .Neutral(showShape: false),
+                size: .Small
+            ),
+            CustomIcon(
+                icon: "binoculars.fill",
+                style: .Custom(shapeColor: .black, iconColor: .pink, showShape: true),
+                size: .Small
+            ),
+            CustomIcon(
+                icon: "binoculars.fill",
+                style: .Custom(shapeColor: .pink, iconColor: .pink, showShape: false),
+                size: .Small
+            )
+        ]
+        
+        VStack {
+            ScrollView(.horizontal) {
+                HStack {
+                    ForEach(arrayLarge, id: \.self) { list in
+                        CustomIcon(
+                            icon: list.icon,
+                            style: list.style,
+                            size: list.size
+                        )
+                    }
+                }
+            }
+            
+            ScrollView(.horizontal) {
+                HStack {
+                    ForEach(arrayMedium, id: \.self) { list in
+                        CustomIcon(
+                            icon: list.icon,
+                            style: list.style,
+                            size: list.size
+                        )
+                    }
+                }
+            }
+            
+            ScrollView(.horizontal) {
+                HStack {
+                    ForEach(arraySmall, id: \.self) { list in
+                        CustomIcon(
+                            icon: list.icon,
+                            style: list.style,
+                            size: list.size
+                        )
+                    }
+                }
+            }
+        }
+    }
 }
