@@ -11,8 +11,8 @@ struct SwiftUIComponentExample: View {
     var body: some View {
         
         ZStack {
-            Color(.systemMint)
-                .ignoresSafeArea()
+//            Color(.systemMint)
+//                .ignoresSafeArea()
             
             VStack(alignment: .leading, spacing: 20.0) {
                 Image("toronto")
