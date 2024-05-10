@@ -65,7 +65,13 @@ struct CustomNavigationSimpleStack: View {
                 }
             }
             .navigationDestination(for: CarBrand.self) { brand in
-                Text("New \(brand.name)")
+                VStack (alignment: .leading) {
+                    HStack {
+                        Text("New \(brand.name)")
+                        Spacer()
+                    }
+                    Spacer()
+                }
             }
         }
     }
