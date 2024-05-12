@@ -30,7 +30,7 @@ enum CustomCardStyleName: Hashable {
 }
 
 extension Color {
-    static let teal = Color(red: 49 / 255, green: 163 / 255, blue: 159 / 255)
+    static let lightTeal = Color(red: 0 / 255, green: 220 / 255, blue: 220 / 255)
     static let darkPink = Color(red: 208 / 255, green: 45 / 255, blue: 208 / 255)
     static let lightGray = Color(red: 204 / 255, green: 204 / 255, blue: 204 / 255, opacity:1.0)
 }
@@ -282,6 +282,8 @@ struct CustomCard_Previews: PreviewProvider {
                 }
             }
         }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(Color.lightTeal)
         
     }
 }
