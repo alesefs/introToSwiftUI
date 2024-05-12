@@ -115,9 +115,11 @@ enum CustomCardStyle: Hashable {
 
 struct CustomCard: ViewModifier {
     var style: CustomCardStyle
+    var decorated: CustomCardDecoration?
     
-    init(style: CustomCardStyle) {
+    init(style: CustomCardStyle, decorated: CustomCardDecoration? = nil) {
         self.style = style
+        self.decorated = decorated
     }
     
     func body(content: Content) -> some View {
@@ -136,6 +138,28 @@ struct CustomCard: ViewModifier {
                     .fill(style.backgroundColor, style: FillStyle(eoFill: true, antialiased: true))
                     .strokeBorder(style.strokeStyle.color, lineWidth: style.strokeStyle.size)
                     .shadow(radius: style.elevationValue)
+                    
+                    
+                    if (decorated != nil) {
+                        HStack {
+                            UnevenRoundedRectangle(
+                                cornerRadii: RectangleCornerRadii(
+                                    topLeading: (style.cardRadius.topLeading) ? style.cardRadius.radius - 4 : 0,
+                                    bottomLeading: (style.cardRadius.bottomLeading) ? style.cardRadius.radius - 4 : 0,
+                                    bottomTrailing: 0,
+                                    topTrailing: 0
+                                ),
+                                style: .continuous
+                            )
+                            .fill(decorated?.color ?? style.backgroundColor)
+                            .frame(width: decorated?.size, height: .infinity)
+                            
+                            Spacer()
+                        }
+                        .if (style.style == CustomCardStyleName.Stroke) { view in
+                            view.padding(.all, style.strokeStyle.size)
+                        }
+                    }
                     
                     content
                 }
@@ -157,12 +181,15 @@ struct CustomCardView: View {
                         backgroundColor: .yellow,
                         cardRadius: CustomCardCornerRadius(
                             radius: 16,
-                            topLeading: false,
-                            topTrailing: false,
+                            topLeading: true,
+                            topTrailing: true,
                             bottomLeading: true,
                             bottomTrailing: true
                         ),
                         elevationValue: 4
+                    ),
+                    decorated: CustomCardDecoration(
+                        size: 24, color: .blue
                     )
                 )
                 /*CustomCard(
@@ -219,7 +246,7 @@ struct CustomCard_Previews: PreviewProvider {
                 .Base(
                     cardRadius: CustomCardCornerRadius(
                         radius: 16,
-                        topLeading: false,
+                        topLeading: true,
                         topTrailing: true,
                         bottomLeading: false,
                         bottomTrailing: true
@@ -229,9 +256,9 @@ struct CustomCard_Previews: PreviewProvider {
                     backgroundColor: .cyan,
                     cardRadius: CustomCardCornerRadius(
                         radius: 16,
-                        topLeading: false,
+                        topLeading: true,
                         topTrailing: true,
-                        bottomLeading: false,
+                        bottomLeading: true,
                         bottomTrailing: true
                     ),
                     strokeStyle: CustomCardStroke(size: 4, color: .purple)
@@ -250,9 +277,9 @@ struct CustomCard_Previews: PreviewProvider {
                 .Emphasis(
                     cardRadius: CustomCardCornerRadius(
                         radius: 16,
-                        topLeading: false,
+                        topLeading: true,
                         topTrailing: true,
-                        bottomLeading: false,
+                        bottomLeading: true,
                         bottomTrailing: true
                     )
                 )
@@ -280,6 +307,37 @@ struct CustomCard_Previews: PreviewProvider {
                         )
                     )
                 }
+                
+                CustomFeedbackScreen(
+                    title: "The quick brown fox jumps over",
+                    description: "He lands head first on a rotting maple log.\n" +
+                    "Knocked unconscious, fox sleeps with shallow breath\n" +
+                    "until the lazy dog awakes.",
+                    icon: "binoculars.fill",
+                    size: CustomFeedbackSize.Medium(),
+                    style: CustomFeedbackStyle.Success,
+                    action: FeedbackActions(actionTitle: "Click!"){
+                        print("Click!")
+                    }
+                )
+                .modifier(
+                    CustomCard(
+                        style: CustomCardStyle.Stroke(
+                            backgroundColor: .orange,
+                            cardRadius: CustomCardCornerRadius(
+                                radius: 16,
+                                topLeading: true,
+                                topTrailing: true,
+                                bottomLeading: true,
+                                bottomTrailing: true
+                            ),
+                            strokeStyle: CustomCardStroke(size: 4, color: .purple)
+                        ),
+                        decorated: CustomCardDecoration(
+                            size: 24, color: .blue
+                        )
+                    )
+                )
             }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
