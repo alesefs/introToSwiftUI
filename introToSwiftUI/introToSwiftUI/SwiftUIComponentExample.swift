@@ -6,8 +6,37 @@
 //
 
 import SwiftUI
+import Foundation
+
+struct RatingModel {
+    var rating: Int = 0
+}
+
+class RatingViewModel: ObservableObject {
+    @Published var ratingModel = RatingModel()
+
+    func updateRating(_ value: Int) {
+        ratingModel.rating = value
+    }
+}
+
+struct RatingButton: View {
+    @ObservedObject var viewModel: RatingViewModel
+        let index: Int
+
+        var body: some View {
+            Image(systemName: viewModel.ratingModel.rating >= index ?
+                                "star.fill" : "star")
+                .foregroundColor(.yellow)
+                .onTapGesture {
+                    viewModel.updateRating(index)
+                }
+        }
+}
 
 struct SwiftUIComponentExample: View {
+    @ObservedObject var viewModel = RatingViewModel()
+    
     var body: some View {
         
         ZStack {
@@ -29,11 +58,16 @@ struct SwiftUIComponentExample: View {
                         
                     VStack {
                         HStack {
+                            /*
                             Image(systemName: "star.fill")
                             Image(systemName: "star.fill")
                             Image(systemName: "star.fill")
                             Image(systemName: "star.leadinghalf.filled")
                             Image(systemName: "star")
+                             */
+                            ForEach(1...5, id: \.self) { index in
+                                RatingButton(viewModel: viewModel, index: index)
+                            }
                         }
                         .foregroundColor(.orange)
                         
