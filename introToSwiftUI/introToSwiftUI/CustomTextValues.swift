@@ -84,14 +84,19 @@ private func getValueToDouble(value: String) -> Double {
 }
 
 private func getCurrencyText(value: String) -> String {
-    if let match = patternCurrencySign.firstMatch(in: value, range: NSRange(location: 0, length: value.utf16.count)) {
-        let range = Range(match.range, in: value)!
-        let matchString = String(value[range])
-        
-        return "\(matchString)"
-    } else {
-        return ""
-    }
+//    if let match = patternCurrencySign.firstMatch(in: value, range: NSRange(location: 0, length: value.utf16.count)) {
+//        let range = Range(match.range, in: value)!
+//        let matchString = String(value[range])
+//        
+//        return "\(matchString)"
+//    } else {
+//        return ""
+//    }
+    
+    let match = patternCurrencySign.firstMatch(in: value, range: NSRange(location: 0, length: value.utf16.count))
+    let range = Range(match!.range, in: value)!
+    let matchString = String(value[range])
+    return "\(matchString)"
 }
 
 #Preview("CustomTextValues", traits: .sizeThatFitsLayout) {
@@ -127,7 +132,8 @@ struct CustomTextValues_Preview: PreviewProvider {
         }
         
         ZStack {
-            Rectangle().foregroundColor(Color(hex: 0x005599, opacity: 1.0))
+            Color(hex: 0x005599, opacity: 1.0).ignoresSafeArea()
+//            Rectangle().foregroundColor(Color(hex: 0x005599, opacity: 1.0))
             
             ScrollView(.vertical) {
                 VStack {
