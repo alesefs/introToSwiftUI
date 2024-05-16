@@ -167,7 +167,7 @@ struct CustomCard: ViewModifier {
     }
 }
 
-struct CustomCardView: View {
+struct CustomCardPreview1: View {
     var body: some View {
         VStack {
             VStack {
@@ -235,7 +235,7 @@ struct CustomCardView: View {
 }
 
 #Preview {
-    CustomCardView()
+    CustomCardPreview1()
 }
 
 struct CustomCard_Previews: PreviewProvider {
