@@ -25,8 +25,7 @@ struct RatingButton: View {
         let index: Int
 
         var body: some View {
-            Image(systemName: viewModel.ratingModel.rating >= index ?
-                                "star.fill" : "star")
+            Image(systemName: viewModel.ratingModel.rating >= index ? "star.fill" : "star")
                 .foregroundColor(.yellow)
                 .onTapGesture {
                     viewModel.updateRating(index)
