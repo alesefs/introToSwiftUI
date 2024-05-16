@@ -101,7 +101,7 @@ private func getCurrencyText(value: String) -> String {
 
 #Preview("CustomTextValues", traits: .sizeThatFitsLayout) {
     CustomTextValues(
-        value: "R$ -100,70", style: .Dark, showValue: true
+        value: "R$ -100,70", style: .Dark, showValue: true//TODO: pattern pra remover letras dentro do valor
     )
 }
 

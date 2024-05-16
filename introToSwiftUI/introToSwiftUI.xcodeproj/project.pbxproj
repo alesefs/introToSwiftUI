@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F0155CC22BF6538C00F2168B /* CustomAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0155CC12BF6538C00F2168B /* CustomAction.swift */; };
+		F0155CC42BF663B100F2168B /* CustomActionText.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0155CC32BF663B100F2168B /* CustomActionText.swift */; };
 		F01B3AA22BEC131E00944374 /* CustomCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = F01B3AA12BEC131E00944374 /* CustomCard.swift */; };
 		F02458A72BEEC08F0005E85F /* CustomNavigationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F02458A62BEEC08F0005E85F /* CustomNavigationTests.swift */; };
 		F034C96C2BEAD65D008BFE9D /* CustomIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = F034C96B2BEAD65D008BFE9D /* CustomIcon.swift */; };
@@ -24,6 +26,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F0155CC12BF6538C00F2168B /* CustomAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAction.swift; sourceTree = "<group>"; };
+		F0155CC32BF663B100F2168B /* CustomActionText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomActionText.swift; sourceTree = "<group>"; };
 		F01B3AA12BEC131E00944374 /* CustomCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCard.swift; sourceTree = "<group>"; };
 		F02458A62BEEC08F0005E85F /* CustomNavigationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationTests.swift; sourceTree = "<group>"; };
 		F034C96B2BEAD65D008BFE9D /* CustomIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomIcon.swift; sourceTree = "<group>"; };
@@ -85,6 +89,8 @@
 				F02458A62BEEC08F0005E85F /* CustomNavigationTests.swift */,
 				F0EC46402BF3E2F9009E368B /* CustomTextValues.swift */,
 				F049DD962BF5A0C40056AE2C /* CustomCardView.swift */,
+				F0155CC12BF6538C00F2168B /* CustomAction.swift */,
+				F0155CC32BF663B100F2168B /* CustomActionText.swift */,
 			);
 			path = introToSwiftUI;
 			sourceTree = "<group>";
@@ -172,7 +178,9 @@
 				F0EC46412BF3E2F9009E368B /* CustomTextValues.swift in Sources */,
 				F0906A452B9E6BC600DAC4E8 /* ContentView.swift in Sources */,
 				F01B3AA22BEC131E00944374 /* CustomCard.swift in Sources */,
+				F0155CC42BF663B100F2168B /* CustomActionText.swift in Sources */,
 				F0906A432B9E6BC600DAC4E8 /* introToSwiftUIApp.swift in Sources */,
+				F0155CC22BF6538C00F2168B /* CustomAction.swift in Sources */,
 				F0A990D22BA0E83500B9582C /* FruitArrayChallenger.swift in Sources */,
 				F065F03B2BED9BE800B1F063 /* CustomFeedbackScreen.swift in Sources */,
 				F065F0372BED3A4700B1F063 /* CustomTextPill.swift in Sources */,

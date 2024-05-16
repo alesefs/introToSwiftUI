@@ -234,7 +234,7 @@ struct CustomIcon: View {
                 width: style.showShaped ? size.shapeSize : (size.shapeSize - size.padding),
                 height: style.showShaped ? size.shapeSize : (size.shapeSize - size.padding)
             )
-            .background(style.showShaped ? style.shapeColor : .black.opacity(0.1))
+            .background(style.showShaped ? style.shapeColor : .black.opacity(0))
             .cornerRadius(999)
             .aspectRatio(contentMode: .fit)
     }

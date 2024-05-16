@@ -38,6 +38,12 @@ enum CustomTextPillStyle: Hashable {
   }
 }
 
+struct CustomTextPillModel: Hashable {
+    var text: String
+    var isFilled: Bool
+    var style: CustomTextPillStyle
+}
+
 struct CustomTextPill: View {
     var text: String
     var isFilled: Bool
@@ -52,6 +58,9 @@ struct CustomTextPill: View {
     var body: some View {
         Text(text)
             .padding(.horizontal, 8.0)
+            .font(.system(size: 12.0, weight: .medium))
+            .lineLimit(1)
+//            .textCase(.uppercase)
             .if(isFilled) { view in
                 view.background(style.backgroundColor)
             }
