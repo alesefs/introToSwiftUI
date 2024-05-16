@@ -39,27 +39,37 @@ enum CustomCardViewStyle: Hashable {
 struct CustomCardView: View {
     var style: CustomCardViewStyle
     var customCardStyle: CustomCardStyle
+    var customCardViewHeader: CustomCardViewHeader
     
-    init(style: CustomCardViewStyle, customCardStyle: CustomCardStyle) {
+//    init(style: CustomCardViewStyle, customCardStyle: CustomCardStyle) {
+//        self.style = style
+//        self.customCardStyle = customCardStyle
+//    }
+    
+    init(style: CustomCardViewStyle, customCardStyle: CustomCardStyle, customCardViewHeader: CustomCardViewHeader) {
         self.style = style
         self.customCardStyle = customCardStyle
+        self.customCardViewHeader = customCardViewHeader
     }
     
     var body: some View {
         switch style {
         case .Decorate(let decoration):
             VStack {
-                CustomCardViewHeader(
-                    title: "Lorem ipsum dolor sit amet, Nullam lorem eros, pretium eu dui sit amet, elementum sagittis justo.  In consectetur nec nunc nec tristique",
-                    icon: "star",
-                    description: "Lorem ipsum dolor sit amet, Nullam lorem eros, pretium eu dui sit amet, elementum sagittis justo.  In consectetur nec nunc nec tristique",
-                    action: CustomActionStyle.Icon(
-                        actionIcon: "binoculars.fill",
-                        action: {
-                            print("Click Icon!")
-                        }
-                    )
-                )
+//                CustomCardViewHeader(
+//                    title: "Lorem ipsum dolor sit amet, Nullam lorem eros, pretium eu dui sit amet, elementum sagittis justo.  In consectetur nec nunc nec tristique",
+//                    icon: "star",
+//                    description: "Lorem ipsum dolor sit amet, Nullam lorem eros, pretium eu dui sit amet, elementum sagittis justo.  In consectetur nec nunc nec tristique",
+//                    action: CustomActionStyle.Icon(
+//                        actionIcon: "binoculars.fill",
+//                        action: {
+//                            print("Click Icon!")
+//                        }
+//                    )
+//                )
+                
+                customCardViewHeader
+                
                 CustomCardViewCenter(
                     title: "Lorem ipsum dolor sit amet, Nullam lorem eros, pretium eu dui sit amet",
                     pillList: textPillList,
@@ -222,21 +232,54 @@ struct CustomCardView: View {
 #Preview("CustomCardViewDecorate") {
     CustomCardView(
         style: CustomCardViewStyle.Decorate(decoration: CustomCardDecoration(size: 12, color: .orange)),
-        customCardStyle: CustomCardStyle.Base(cardRadius: CustomCardCornerRadius(radius: 16, topLeading: true, topTrailing: true, bottomLeading: false, bottomTrailing: true))
+        customCardStyle: CustomCardStyle.Base(cardRadius: CustomCardCornerRadius(radius: 16, topLeading: true, topTrailing: true, bottomLeading: false, bottomTrailing: true)),
+        customCardViewHeader: CustomCardViewHeader(
+                                    title: "Lorem ipsum dolor sit amet, Nullam lorem eros, pretium eu dui sit amet, elementum sagittis justo.  In consectetur nec nunc nec tristique",
+                                    icon: "star",
+                                    description: "Lorem ipsum dolor sit amet, Nullam lorem eros, pretium eu dui sit amet, elementum sagittis justo.  In consectetur nec nunc nec tristique",
+                                    action: CustomActionStyle.Icon(
+                                        actionIcon: "binoculars.fill",
+                                        action: {
+                                            print("Click Icon!")
+                                        }
+                                    )
+                                )
     )
 }
 
 #Preview("CustomCardViewVerticalImage") {
     CustomCardView(
         style: CustomCardViewStyle.VerticalImage(image: "london"),
-        customCardStyle: CustomCardStyle.Base(cardRadius: CustomCardCornerRadius(radius: 16, topLeading: true, topTrailing: true, bottomLeading: false, bottomTrailing: true))
+        customCardStyle: CustomCardStyle.Base(cardRadius: CustomCardCornerRadius(radius: 16, topLeading: true, topTrailing: true, bottomLeading: false, bottomTrailing: true)),
+        customCardViewHeader: CustomCardViewHeader(
+                                    title: "Lorem ipsum dolor sit amet, Nullam lorem eros, pretium eu dui sit amet, elementum sagittis justo.  In consectetur nec nunc nec tristique",
+                                    icon: "star",
+                                    description: "Lorem ipsum dolor sit amet, Nullam lorem eros, pretium eu dui sit amet, elementum sagittis justo.  In consectetur nec nunc nec tristique",
+                                    action: CustomActionStyle.Icon(
+                                        actionIcon: "binoculars.fill",
+                                        action: {
+                                            print("Click Icon!")
+                                        }
+                                    )
+                                )
     )
 }
 
 #Preview("CustomCardViewHorizontalImage") {
     CustomCardView(
         style: CustomCardViewStyle.HorizontalImage(image: "toronto"),
-        customCardStyle: CustomCardStyle.Base(cardRadius: CustomCardCornerRadius(radius: 16, topLeading: true, topTrailing: true, bottomLeading: false, bottomTrailing: true))
+        customCardStyle: CustomCardStyle.Base(cardRadius: CustomCardCornerRadius(radius: 16, topLeading: true, topTrailing: true, bottomLeading: false, bottomTrailing: true)),
+        customCardViewHeader: CustomCardViewHeader(
+                                    title: "Lorem ipsum dolor sit amet, Nullam lorem eros, pretium eu dui sit amet, elementum sagittis justo.  In consectetur nec nunc nec tristique",
+                                    icon: "star",
+                                    description: "Lorem ipsum dolor sit amet, Nullam lorem eros, pretium eu dui sit amet, elementum sagittis justo.  In consectetur nec nunc nec tristique",
+                                    action: CustomActionStyle.Icon(
+                                        actionIcon: "binoculars.fill",
+                                        action: {
+                                            print("Click Icon!")
+                                        }
+                                    )
+                                )
     )
 }
 
@@ -519,3 +562,46 @@ struct CustomCardViewBottom: View {
         )
     )
 }
+
+/*
+ protocol CustomViewHeader : View {
+     var title: String {get}
+     var icon: String {get}
+     var description: String? {get}
+     var action: CustomActionStyle? {get}
+ }
+ 
+ struct CustomViewMonetaryHeader: CustomViewHeader {
+     var title: String {get}
+     var icon: String {get}
+     var description: String? {get}
+     var action: CustomActionStyle? {get}
+     var monetaryValue: CustomTextValues{get}
+ }
+ 
+ struct SimpleHeader: CustomViewHeader {
+      var title: String
+      var icon: String
+      var description: String?
+      var action: CustomActionStyle?
+
+      var body: some View { ... }
+ }
+ 
+ struct TestView: View {
+    var header: CustomViewHeader
+ 
+    var body: some View {
+         VStack {
+             Text(header.title)
+ 
+             //proriedades unicas
+             if let customHeaderMonetary = header as? CustomViewMonetaryHeader {
+                 CustomTextValue(value: customHeaderMonetary.monetaryValue)
+             }
+        }
+    }
+ }
+ */
+ 
+
