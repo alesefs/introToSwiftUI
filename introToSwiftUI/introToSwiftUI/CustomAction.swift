@@ -124,3 +124,108 @@ struct CustomAction: View {
         )
     }
 }
+
+protocol CustomActionButton : View {
+    var action: () -> Void {get}
+}
+
+struct CustomActionButtonIcon: CustomActionButton {
+    var actionIcon: String
+    var action: () -> Void
+    
+    init(actionIcon: String, action: @escaping () -> Void) {
+        self.actionIcon = actionIcon
+        self.action = action
+    }
+    
+    var body: some View {
+        CustomIcon(
+            icon: actionIcon,
+            style: .Custom(
+                shapeColor: .clear,
+                iconColor: .red,
+                showShape: false
+            ),
+            size: .Large
+        ).onTapGesture {
+            action()
+        }
+    }
+}
+
+#Preview("CustomActionButtonIcon") {
+    CustomActionButtonIcon(actionIcon: "star.fill", action: { print("icon click!") })
+}
+
+struct CustomActionButtonText: CustomActionButton {
+    var actionText: String
+    var textStyle: TextStyle
+    var action: () -> Void
+    
+    init(actionText: String, textStyle: TextStyle, action: @escaping () -> Void) {
+        self.actionText = actionText
+        self.textStyle = textStyle
+        self.action = action
+    }
+    
+    var body: some View {
+        CustomActionText(
+            text: actionText,
+            style: textStyle
+        ).onTapGesture {
+            action()
+        }
+    }
+}
+
+#Preview("CustomActionButtonIcon") {
+    CustomActionButtonText(
+        actionText: "text button",
+        textStyle: TextStyle(
+            textColor: .blue,
+            fontSize: 22.0,
+            fontWeight: .thin
+        ),
+        action: { print("text click!")}
+    )
+}
+
+private struct CustomActionButtonUser: View {
+    var selectButton: any CustomActionButton
+    var textButton: CustomActionButtonText
+    var iconButton: CustomActionButtonIcon
+    
+    init(selectButton: any CustomActionButton, textButton: CustomActionButtonText, iconButton: CustomActionButtonIcon) {
+        self.selectButton = selectButton
+        self.textButton = textButton
+        self.iconButton = iconButton
+    }
+    
+    var body: some View {
+        var contentAsAnyView: AnyView { AnyView(selectButton) }
+        
+        VStack {
+            contentAsAnyView
+            
+            textButton
+            
+            iconButton
+        }
+    }
+}
+
+#Preview("CustomActionButtonUser") {
+    CustomActionButtonUser(
+        selectButton: CustomActionButtonIcon(actionIcon: "arrow.left", action: { print("icon click! 1") }),
+        textButton: CustomActionButtonText(
+            actionText: "blue button",
+            textStyle: TextStyle(
+                textColor: .blue,
+                fontSize: 22.0,
+                fontWeight: .thin
+            ),
+            action: { print("text click! 2")}
+        ),
+        iconButton: CustomActionButtonIcon(actionIcon: "heart.fill", action: { print("icon click! 3") })
+    )
+}
