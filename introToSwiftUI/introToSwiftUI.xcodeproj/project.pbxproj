@@ -13,6 +13,7 @@
 		F02458A72BEEC08F0005E85F /* CustomNavigationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F02458A62BEEC08F0005E85F /* CustomNavigationTests.swift */; };
 		F034C96C2BEAD65D008BFE9D /* CustomIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = F034C96B2BEAD65D008BFE9D /* CustomIcon.swift */; };
 		F049DD972BF5A0C40056AE2C /* CustomCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F049DD962BF5A0C40056AE2C /* CustomCardView.swift */; };
+		F054E3752BF9A094001313B4 /* CustomFeedbackB.swift in Sources */ = {isa = PBXBuildFile; fileRef = F054E3742BF9A094001313B4 /* CustomFeedbackB.swift */; };
 		F065F0372BED3A4700B1F063 /* CustomTextPill.swift in Sources */ = {isa = PBXBuildFile; fileRef = F065F0362BED3A4700B1F063 /* CustomTextPill.swift */; };
 		F065F0392BED3FC100B1F063 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = F065F0382BED3FC100B1F063 /* Utils.swift */; };
 		F065F03B2BED9BE800B1F063 /* CustomFeedbackScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = F065F03A2BED9BE800B1F063 /* CustomFeedbackScreen.swift */; };
@@ -32,6 +33,7 @@
 		F02458A62BEEC08F0005E85F /* CustomNavigationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationTests.swift; sourceTree = "<group>"; };
 		F034C96B2BEAD65D008BFE9D /* CustomIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomIcon.swift; sourceTree = "<group>"; };
 		F049DD962BF5A0C40056AE2C /* CustomCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCardView.swift; sourceTree = "<group>"; };
+		F054E3742BF9A094001313B4 /* CustomFeedbackB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomFeedbackB.swift; sourceTree = "<group>"; };
 		F065F0362BED3A4700B1F063 /* CustomTextPill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextPill.swift; sourceTree = "<group>"; };
 		F065F0382BED3FC100B1F063 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		F065F03A2BED9BE800B1F063 /* CustomFeedbackScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomFeedbackScreen.swift; sourceTree = "<group>"; };
@@ -91,6 +93,7 @@
 				F049DD962BF5A0C40056AE2C /* CustomCardView.swift */,
 				F0155CC12BF6538C00F2168B /* CustomAction.swift */,
 				F0155CC32BF663B100F2168B /* CustomActionText.swift */,
+				F054E3742BF9A094001313B4 /* CustomFeedbackB.swift */,
 			);
 			path = introToSwiftUI;
 			sourceTree = "<group>";
@@ -186,6 +189,7 @@
 				F065F0372BED3A4700B1F063 /* CustomTextPill.swift in Sources */,
 				F034C96C2BEAD65D008BFE9D /* CustomIcon.swift in Sources */,
 				F065F0392BED3FC100B1F063 /* Utils.swift in Sources */,
+				F054E3752BF9A094001313B4 /* CustomFeedbackB.swift in Sources */,
 				F049DD972BF5A0C40056AE2C /* CustomCardView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

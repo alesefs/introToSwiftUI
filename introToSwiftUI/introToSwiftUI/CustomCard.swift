@@ -332,6 +332,7 @@ struct CustomCard_Previews: PreviewProvider {
                         )
                     )
                 )
+                .padding(.all, 8)
             }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
