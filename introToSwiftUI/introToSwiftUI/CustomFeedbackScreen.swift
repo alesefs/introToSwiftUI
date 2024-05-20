@@ -29,7 +29,7 @@ enum CustomFeedbackStyle: Hashable {
     }
 }
 
-struct CustomFeedbackSizes {
+struct CustomFeedbackValues {
     let horizontalPadding: CGFloat
     let verticalPadding: CGFloat
     let iconPadding: CGFloat
@@ -38,6 +38,10 @@ struct CustomFeedbackSizes {
     let descriptionFontSize: CGFloat
     let textAlign: TextAlignment
     let contentAlign: HorizontalAlignment
+}
+
+enum CustomFeedbackSizeName: Hashable {
+    case large, medium, small
 }
 
 enum CustomFeedbackSize: Hashable {
@@ -54,11 +58,22 @@ enum CustomFeedbackSize: Hashable {
         }
     }
     
-    var sizes: CustomFeedbackSizes {
+    var size: CustomFeedbackSizeName {
+        switch self {
+        case .Large(let showCard):
+            return .large
+        case .Medium(let showCard):
+            return .medium
+        case .Small(let showCard):
+            return .small
+        }
+    }
+
+    var sizes: CustomFeedbackValues {
         switch self {
             
         case .Large(showCard: _):
-            return CustomFeedbackSizes(
+            return CustomFeedbackValues(
                 horizontalPadding: 16,
                 verticalPadding: 24,
                 iconPadding: 16,
@@ -69,7 +84,7 @@ enum CustomFeedbackSize: Hashable {
                 contentAlign: HorizontalAlignment.center
             )
         case .Medium(showCard: _):
-            return CustomFeedbackSizes(
+            return CustomFeedbackValues(
                 horizontalPadding: 12,
                 verticalPadding: 16,
                 iconPadding: 16,
@@ -80,7 +95,7 @@ enum CustomFeedbackSize: Hashable {
                 contentAlign: HorizontalAlignment.center
             )
         case .Small(showCard: _):
-            return CustomFeedbackSizes(
+            return CustomFeedbackValues(
                 horizontalPadding: 16,
                 verticalPadding: 16,
                 iconPadding: 8,

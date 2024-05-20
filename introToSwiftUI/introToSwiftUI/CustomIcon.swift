@@ -242,11 +242,18 @@ struct CustomIcon: View {
 
 
 #Preview {
-    CustomIcon(
-        icon: "binoculars.fill",
-        style: .Error,
-        size: .Large
-    )
+    VStack(spacing: 0) {
+        CustomIcon(
+            icon: "binoculars.fill",
+            style: .Success,
+            size: .Large
+        )
+        CustomIcon(
+            icon: "binoculars.fill",
+            style: .Error,
+            size: .Large
+        )
+    }
     
 //    VStack {
 //        ForEach(CustomIconSize.allCases, id: \.self) { size in
@@ -393,7 +400,7 @@ struct CustomIcon_Previews: PreviewProvider {
             )
         ]
         
-        VStack {
+        VStack(spacing: 0) {
 //            ScrollView(.horizontal) {
 //                HStack {
 //                    ForEach(arrayLarge, id: \.self) { list in
@@ -445,11 +452,11 @@ struct CustomIcon_Previews: PreviewProvider {
             }
             
             ScrollView(.vertical) {
-                VStack {
+                VStack(spacing: 0) {
                     ForEach(allCasesSize, id: \.self) { size in
                         VStack {
                             ScrollView(.horizontal) {
-                                HStack {
+                                HStack(spacing: 0) {
                                     ForEach(allCasesStyle, id: \.self) { style in
                                         CustomIcon(icon: "binoculars.fill", style: style, size: size)
                                     }

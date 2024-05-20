@@ -33,7 +33,7 @@ struct CustomActionText: View {
     
     var body: some View {
         Text(text)
-            .padding(.all, 1.0)
+            .padding(.horizontal, 1.0)
             .lineLimit(1)
             .foregroundColor(style.textColor)
             .font(.system(
@@ -53,5 +53,8 @@ struct CustomActionText: View {
 //        )
 //    )
     
-    CustomActionText(text: "kjslkajhdl")
+    VStack(spacing: 0) {
+        CustomActionText(text: "kjslkajhdl")
+        CustomActionText(text: "kjslkajhdl")
+    }
 }

@@ -172,9 +172,10 @@ struct CustomActionButtonText: CustomActionButton {
         CustomActionText(
             text: actionText,
             style: textStyle
-        ).onTapGesture {
-            action()
-        }
+        )
+//        .onTapGesture {
+//            action()
+//        }
     }
 }
 
