@@ -11,19 +11,62 @@ import SwiftUI
  TODO: melhorar sistema de "pegar nome" para trabalhar if/switch das subclasses dentro dos enums, como: sizes e styles
  */
 
+enum FeedbackStyle {
+    case Success, Error, Warning, Waiting, Info
+    
+    var iconStyle: CustomIconStyle {
+        switch self {
+        case .Success:
+                .Success
+        case .Error:
+                .Error
+        case .Warning:
+                .Warning
+        case .Waiting:
+                .Neutral(showShape: true)
+        case .Info:
+                .Info
+        }
+    }
+    
+    var decorateColor: Color {
+        switch self {
+        case .Success:
+                .green
+        case .Error:
+                .red
+        case .Warning:
+                .yellow
+        case .Waiting:
+                .gray
+        case .Info:
+                .blue
+        }
+    }
+}
+
+//enum FeedbackSize {
+//    case Large, Medium, Small
+//}
+
+enum FeedbackSize: Equatable {
+    case Large, Medium(showCard: Bool), Small(showCard: Bool)
+}
+
 struct CustomFeedback: View {
-    var style: CustomFeedbackStyle
-    var size: CustomFeedbackSize
+    var style: FeedbackStyle
+    var size: FeedbackSize
+//    var showCard: Bool
     //var icon: String
     //var title: String
     //var description: String?
-    //var action: (String, () -> Void)?
+    var action: (() -> Void)
     
-    var body: some View {
+    /*var body: some View {
         switch size {
-        case .Large(let showCard):
+        case .Large:
             CustomFeedbackLargeMedium(
-                style: style.style,
+                style: style.iconStyle,
                 size: size.size,
                 showCard: showCard
             )
@@ -40,29 +83,78 @@ struct CustomFeedback: View {
                 showCard: showCard
             )
         }
+    }*/
+    
+    /*
+    var body: some View {
+        switch size {
+        case .Large:
+            CustomFeedbackLargeMedium(
+                style: style,
+                size: size,
+                showCard: showCard
+            )
+        case .Medium:
+            CustomFeedbackLargeMedium(
+                style: style,
+                size: size,
+                showCard: showCard
+            )
+        case .Small:
+            CustomFeedbackSmall(
+                style: style,
+                size: size,
+                showCard: showCard
+            )
+        }
+    }
+     */
+    
+    var body: some View {
+        switch size {
+        case .Large:
+            CustomFeedbackLargeMedium(
+                style: style,
+                size: size,
+                action: action
+            )
+        case .Medium(_):
+            CustomFeedbackLargeMedium(
+                style: style,
+                size: size,
+                action: action
+            )
+        case .Small(_):
+            CustomFeedbackSmall(
+                style: style,
+                size: size,
+                action: action
+            )
+        }
     }
 }
 
 private struct CustomFeedbackLargeMedium: View {
-    var style: CustomIconStyle
-    var size: CustomFeedbackSizeName
-    var showCard: Bool
+    var style: FeedbackStyle
+    var size: FeedbackSize
+    var action: (() -> Void)
     
     var body: some View {
+        
         VStack(alignment: .center) {//MARK: muda
             CustomIcon(
                 icon: "binoculars.fill",
-                style: style,
-                size: size == CustomFeedbackSizeName.large ? CustomIconSize.Large : CustomIconSize.Medium
+                style: style.iconStyle,
+                size: size == FeedbackSize.Large ? CustomIconSize.Large : CustomIconSize.Medium
             )
             
             Spacer().frame(width: .infinity, height: 8.0)//MARK: muda
             
-            CustomFeedbackTexts(alignment: .center, textAlign: .center, size: size)
+            CustomFeedbackTexts(alignment: .center, textAlign: .center, size: size, action: action)
         }
         .padding(.vertical, 16.0)
-        .frame(width: size == CustomFeedbackSizeName.large ? .infinity : 328 )//MARK: muda
-        .if(showCard) { view in
+        .frame(width: size == FeedbackSize.Large ? .infinity : 328 )//MARK: muda
+        .if(showCard(size: size)) { view in
             view.modifier(
                 CustomCard(
                     style: CustomCardStyle.Base(
@@ -74,7 +166,7 @@ private struct CustomFeedbackLargeMedium: View {
                             bottomTrailing: true
                         )
                     ),
-                    decorated: CustomCardDecoration(size: 12.0, color: .blue)
+                    decorated: CustomCardDecoration(size: 12.0, color: style.decorateColor)
                 )
             )
         }
@@ -82,27 +174,27 @@ private struct CustomFeedbackLargeMedium: View {
 }
 
 private struct CustomFeedbackSmall: View {
-    var style: CustomIconStyle
-    var size: CustomFeedbackSizeName
-    var showCard: Bool
-    
+    var style: FeedbackStyle
+    var size: FeedbackSize
+    var action: (() -> Void)
+
     var body: some View {
         HStack(alignment: .top) {
             Spacer().frame(width: 8.0, height: .infinity, alignment: .leading)
             
             CustomIcon(
                 icon: "binoculars.fill",
-                style: style,
+                style: style.iconStyle,
                 size: .Medium
             )
             
             Spacer().frame(width: 8.0, height: .infinity, alignment: .leading)
             
-            CustomFeedbackTexts(alignment: .leading, textAlign: .leading, size: size)
+            CustomFeedbackTexts(alignment: .leading, textAlign: .leading, size: size, action: action)
         }
         .frame(width: 328)
         .padding(.vertical, 16.0)
-        .if(showCard) { view in
+        .if(showCard(size: size)) { view in
             view.modifier(
                 CustomCard(
                     style: CustomCardStyle.Base(
@@ -114,53 +206,25 @@ private struct CustomFeedbackSmall: View {
                             bottomTrailing: true
                         )
                     ),
-                    decorated: CustomCardDecoration(size: 12.0, color: .blue)
+                    decorated: CustomCardDecoration(size: 12.0, color: style.decorateColor)
                 )
             )
         }
     }
 }
 
-#Preview("CustomFeedback0") {
-    VStack {
-        CustomFeedback(style: CustomFeedbackStyle.Success, size: CustomFeedbackSize.Large(showCard: true))
-    }
-}
-
-
-#Preview("CustomFeedbackA") {
-    VStack {
-        CustomFeedbackLargeMedium(
-            style: CustomIconStyle.Error,
-            size: CustomFeedbackSizeName.large,
-            showCard: true
-        )
-        
-        CustomFeedbackLargeMedium(
-            style: CustomIconStyle.Success,
-            size: CustomFeedbackSizeName.medium,
-            showCard: true
-        )
-        
-        CustomFeedbackSmall(
-            style: CustomIconStyle.Neutral(showShape: true),
-            size: CustomFeedbackSizeName.small,
-            showCard: true
-        )
-    }
-}
-
 struct CustomFeedbackTexts: View {
     var alignment: HorizontalAlignment
     var textAlign: TextAlignment
-    var size: CustomFeedbackSizeName
+    var size: FeedbackSize
+    var action: (() -> Void)
     
     var body: some View {
         VStack(alignment: alignment) {
             Text("The quick brown fox jumps over")
                 .foregroundColor(.black)
                 .lineLimit(2)
-                .font(.system(size: size == CustomFeedbackSizeName.large ? 22 : 18 ))
+                .font(.system(size: size == FeedbackSize.Large ? 22 : 18 ))
                 .multilineTextAlignment(textAlign)//MARK: muda
                 .frame(width: .infinity)
             
@@ -171,7 +235,7 @@ struct CustomFeedbackTexts: View {
                  "until the lazy dog awakes.")
             .foregroundColor(.gray)
             .lineLimit(5)
-            .font(.system(size: size == CustomFeedbackSizeName.large ? 16 : 14 ))//MARK: muda
+            .font(.system(size: size == FeedbackSize.Large ? 16 : 14 ))//MARK: muda
             .multilineTextAlignment(textAlign)//MARK: muda
             .frame(width: .infinity)
             
@@ -179,17 +243,136 @@ struct CustomFeedbackTexts: View {
             
             CustomAction(
                 style: CustomActionStyle.Text(
-                    actionText: "Text",
+                    actionText: "Click",
                     textStyle: TextStyle(
                         textColor: Color.teal,
-                        fontSize: size == CustomFeedbackSizeName.large ? 16 : 14,
+                        fontSize: size == FeedbackSize.Large ? 16 : 14,
                         fontWeight: .semibold
                     ),
-                    action: {
-                        print("Click Text!")
-                    }
+                    action: { action() }
                 )
             )
+        }
+    }
+}
+
+func showCard(size: FeedbackSize) -> Bool {
+    switch size {
+        case .Medium(let showCard), .Small(let showCard):
+            showCard
+        default:
+            false
+    }
+}
+
+#Preview("CustomFeedback0") {
+    VStack {
+        @State var showCard: Bool = true
+        
+        CustomFeedback(
+            style: FeedbackStyle.Success,
+            size: FeedbackSize.Medium(showCard: showCard),
+            action: {
+                showCard.toggle()
+            }
+        )
+    }
+}
+
+//struct ContentViewW_Previews: PreviewProvider {
+//    @State var showCard: Bool = true
+//    @State var count: Int = 0
+//    
+//    static var previews: some View {
+//        
+//        
+//        VStack {
+//            CustomFeedbackLargeMedium(
+//                style: FeedbackStyle.Error,
+//                size: FeedbackSize.Large
+//            ){
+//                count += 1
+//                print("click \(count)")
+//            }
+//            
+//            CustomFeedbackLargeMedium(
+//                style: FeedbackStyle.Success,
+//                size: FeedbackSize.Medium(showCard: showCard)
+//            ){
+//                showCard.toggle()
+//            }
+//            
+//            CustomFeedbackSmall(
+//                style: FeedbackStyle.Waiting,
+//                size: FeedbackSize.Small(showCard: showCard)
+//            ){
+//                showCard.toggle()
+//            }
+//        }
+//    }
+//}
+
+struct ContentViewW: View {
+    
+    @State var showCard: Bool = true
+    @State var count: Int = 0
+    
+    var body: some View {
+        VStack {
+            CustomFeedbackLargeMedium(
+                style: FeedbackStyle.Error,
+                size: FeedbackSize.Large
+            ){
+                count += 1
+                print("click \(count)")
+            }
+
+            CustomFeedbackLargeMedium(
+                style: FeedbackStyle.Success,
+                size: FeedbackSize.Medium(showCard: showCard)
+            ){
+                showCard.toggle()
+            }
+
+            CustomFeedbackSmall(
+                style: FeedbackStyle.Waiting,
+                size: FeedbackSize.Small(showCard: showCard)
+            ){
+                showCard.toggle()
+            }
+        }
+    }
+}
+
+#Preview("ContentViewW") {
+    ContentViewW()
+}
+
+#Preview("CustomFeedbackA") {
+    VStack {
+        @State var showCard: Bool = true
+        @State var clickLarge: Int = 0
+        
+        CustomFeedbackLargeMedium(
+            style: FeedbackStyle.Error,
+            size: FeedbackSize.Large
+        ){
+            clickLarge += 1
+            print("click \(clickLarge)")
+        }
+        
+        CustomFeedbackLargeMedium(
+            style: FeedbackStyle.Success,
+            size: FeedbackSize.Medium(showCard: showCard)
+        ){
+            showCard.toggle()
+        }
+        
+        CustomFeedbackSmall(
+            style: FeedbackStyle.Waiting,
+            size: FeedbackSize.Small(showCard: showCard)
+        ){
+            showCard.toggle()
         }
     }
 }
