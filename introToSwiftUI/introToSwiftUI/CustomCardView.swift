@@ -405,7 +405,8 @@ struct CustomCardViewCenter: View {
                         ForEach(pillListItems, id: \.self) { item in
                             CustomTextPill(
                                 text: item.text,
-                                isFilled: item.isFilled,
+                                isFilled: item.isFilled, 
+                                isMarquee: false,
                                 style: item.style
                             )
                         }
@@ -477,9 +478,9 @@ struct CustomCardViewCenter: View {
 
 var textPillList: [CustomTextPillModel] {
     return [
-        CustomTextPillModel(text: "Texto 1", isFilled: true, style: .neutral),
-        CustomTextPillModel(text: "Texto 2", isFilled: true, style: .neutral),
-        CustomTextPillModel(text: "Texto 3", isFilled: false, style: .neutral),
+        CustomTextPillModel(text: "Texto 1", isFilled: true, isMarquee: true, style: .neutral),
+        CustomTextPillModel(text: "Texto 2", isFilled: true, isMarquee: false, style: .neutral),
+        CustomTextPillModel(text: "Texto 3", isFilled: false, isMarquee: false, style: .neutral),
 //        CustomTextPillModel(text: "Texto 4", isFilled: true, style: .neutral),
 //        CustomTextPillModel(text: "Texto 5", isFilled: true, style: .neutral),
     ]

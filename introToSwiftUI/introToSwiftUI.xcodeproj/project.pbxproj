@@ -23,6 +23,7 @@
 		F0906A4A2B9E6BC700DAC4E8 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F0906A492B9E6BC700DAC4E8 /* Preview Assets.xcassets */; };
 		F0906A512B9E6FF100DAC4E8 /* SwiftUIComponentExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0906A502B9E6FF100DAC4E8 /* SwiftUIComponentExample.swift */; };
 		F0A990D22BA0E83500B9582C /* FruitArrayChallenger.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0A990D12BA0E83500B9582C /* FruitArrayChallenger.swift */; };
+		F0CCA6DB2C12218E007CAA7F /* CustomMarqueeText.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0CCA6DA2C12218E007CAA7F /* CustomMarqueeText.swift */; };
 		F0EC46412BF3E2F9009E368B /* CustomTextValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0EC46402BF3E2F9009E368B /* CustomTextValues.swift */; };
 /* End PBXBuildFile section */
 
@@ -44,6 +45,7 @@
 		F0906A492B9E6BC700DAC4E8 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		F0906A502B9E6FF100DAC4E8 /* SwiftUIComponentExample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIComponentExample.swift; sourceTree = "<group>"; };
 		F0A990D12BA0E83500B9582C /* FruitArrayChallenger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FruitArrayChallenger.swift; sourceTree = "<group>"; };
+		F0CCA6DA2C12218E007CAA7F /* CustomMarqueeText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomMarqueeText.swift; sourceTree = "<group>"; };
 		F0EC46402BF3E2F9009E368B /* CustomTextValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextValues.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -94,6 +96,7 @@
 				F0155CC12BF6538C00F2168B /* CustomAction.swift */,
 				F0155CC32BF663B100F2168B /* CustomActionText.swift */,
 				F054E3742BF9A094001313B4 /* CustomFeedbackB.swift */,
+				F0CCA6DA2C12218E007CAA7F /* CustomMarqueeText.swift */,
 			);
 			path = introToSwiftUI;
 			sourceTree = "<group>";
@@ -178,6 +181,7 @@
 			files = (
 				F02458A72BEEC08F0005E85F /* CustomNavigationTests.swift in Sources */,
 				F0906A512B9E6FF100DAC4E8 /* SwiftUIComponentExample.swift in Sources */,
+				F0CCA6DB2C12218E007CAA7F /* CustomMarqueeText.swift in Sources */,
 				F0EC46412BF3E2F9009E368B /* CustomTextValues.swift in Sources */,
 				F0906A452B9E6BC600DAC4E8 /* ContentView.swift in Sources */,
 				F01B3AA22BEC131E00944374 /* CustomCard.swift in Sources */,
