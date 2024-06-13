@@ -19,6 +19,16 @@ struct CustomNavigationSimple: View {
                         .foregroundColor(.accentColor)
                     Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
                 }
+                
+                NavigationLink {
+//                    Text("New View") //tela 2
+                    ContentView()
+                } label: {
+                    Image(systemName: "globe")
+                        .imageScale(.large)
+                        .foregroundColor(.accentColor)
+                    Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+                }
             }
             .padding()
         }
@@ -28,7 +38,6 @@ struct CustomNavigationSimple: View {
 #Preview("CustomNavigationSimple") {
     CustomNavigationSimple()
 }
-
 
 struct CarBrand: Identifiable, Hashable {
     let name: String
@@ -56,22 +65,30 @@ struct CustomNavigationSimpleStack: View {
     
     var body: some View {
         NavigationStack {
-            List {
+//            List {
+//                ForEach(brands) { brand in
+////                    Text(brand.name)
+//                    NavigationLink(value: brand) {
+//                        Text(brand.name)
+//                    }
+//                }
+//            }
+            VStack {
                 ForEach(brands) { brand in
-//                    Text(brand.name)
                     NavigationLink(value: brand) {
                         Text(brand.name)
                     }
                 }
             }
             .navigationDestination(for: CarBrand.self) { brand in
-                VStack (alignment: .leading) {
-                    HStack {
-                        Text("New \(brand.name)")
-                        Spacer()
-                    }
-                    Spacer()
-                }
+//                VStack (alignment: .leading) {
+//                    HStack {
+//                        Text("New \(brand.name)")
+//                        Spacer()
+//                    }
+//                    Spacer()
+//                }
+                Screen1(brand: "New \(brand.name)")
             }
         }
     }
