@@ -12,6 +12,7 @@
 		F01B3AA22BEC131E00944374 /* CustomCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = F01B3AA12BEC131E00944374 /* CustomCard.swift */; };
 		F02458A72BEEC08F0005E85F /* CustomNavigationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F02458A62BEEC08F0005E85F /* CustomNavigationTests.swift */; };
 		F034C96C2BEAD65D008BFE9D /* CustomIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = F034C96B2BEAD65D008BFE9D /* CustomIcon.swift */; };
+		F0371D9A2C1CA77E0040E1A5 /* CustomNavigationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0371D992C1CA77E0040E1A5 /* CustomNavigationRouter.swift */; };
 		F046208C2C1A5B3D005680CF /* Screen1.swift in Sources */ = {isa = PBXBuildFile; fileRef = F046208B2C1A5B3D005680CF /* Screen1.swift */; };
 		F049DD972BF5A0C40056AE2C /* CustomCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F049DD962BF5A0C40056AE2C /* CustomCardView.swift */; };
 		F054E3752BF9A094001313B4 /* CustomFeedbackB.swift in Sources */ = {isa = PBXBuildFile; fileRef = F054E3742BF9A094001313B4 /* CustomFeedbackB.swift */; };
@@ -34,6 +35,7 @@
 		F01B3AA12BEC131E00944374 /* CustomCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCard.swift; sourceTree = "<group>"; };
 		F02458A62BEEC08F0005E85F /* CustomNavigationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationTests.swift; sourceTree = "<group>"; };
 		F034C96B2BEAD65D008BFE9D /* CustomIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomIcon.swift; sourceTree = "<group>"; };
+		F0371D992C1CA77E0040E1A5 /* CustomNavigationRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationRouter.swift; sourceTree = "<group>"; };
 		F046208B2C1A5B3D005680CF /* Screen1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Screen1.swift; sourceTree = "<group>"; };
 		F049DD962BF5A0C40056AE2C /* CustomCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCardView.swift; sourceTree = "<group>"; };
 		F054E3742BF9A094001313B4 /* CustomFeedbackB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomFeedbackB.swift; sourceTree = "<group>"; };
@@ -108,6 +110,7 @@
 				F0155CC32BF663B100F2168B /* CustomActionText.swift */,
 				F054E3742BF9A094001313B4 /* CustomFeedbackB.swift */,
 				F0CCA6DA2C12218E007CAA7F /* CustomMarqueeText.swift */,
+				F0371D992C1CA77E0040E1A5 /* CustomNavigationRouter.swift */,
 			);
 			path = introToSwiftUI;
 			sourceTree = "<group>";
@@ -193,6 +196,7 @@
 				F02458A72BEEC08F0005E85F /* CustomNavigationTests.swift in Sources */,
 				F0906A512B9E6FF100DAC4E8 /* SwiftUIComponentExample.swift in Sources */,
 				F0CCA6DB2C12218E007CAA7F /* CustomMarqueeText.swift in Sources */,
+				F0371D9A2C1CA77E0040E1A5 /* CustomNavigationRouter.swift in Sources */,
 				F0EC46412BF3E2F9009E368B /* CustomTextValues.swift in Sources */,
 				F0906A452B9E6BC600DAC4E8 /* ContentView.swift in Sources */,
 				F046208C2C1A5B3D005680CF /* Screen1.swift in Sources */,
