@@ -51,8 +51,10 @@ struct ContentView: View {
         
         VStack {
             
+            let cityName = "london"
+            
             ZStack {
-                Image("toronto")
+                Image(IconAzure().iconOkName(iconName: cityName))
                     .resizable()
                     .cornerRadius(10.0)
                     .aspectRatio(
@@ -64,7 +66,7 @@ struct ContentView: View {
                     Text("CN Tower")
                         .font(.largeTitle)
                         .padding([.top, .leading, .trailing])
-                    Text("Toronto")
+                    Text(cityName)
                         .font(.caption)
                         .padding([.leading, .bottom, .trailing])
                 }
