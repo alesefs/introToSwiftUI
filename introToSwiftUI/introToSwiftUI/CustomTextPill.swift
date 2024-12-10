@@ -103,7 +103,7 @@ struct MarqueeText: View {
     var animationSpeed: Double = 0.02
     var delayTime: Double = 0.5 //if 0 = continuos
     
-    @Environment(\.colorScheme) var scheme
+//    @Environment(\.colorScheme) var scheme
     
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false) {
