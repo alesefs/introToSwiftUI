@@ -18,6 +18,10 @@ class RatingViewModel: ObservableObject {
     func updateRating(_ value: Int) {
         ratingModel.rating = value
     }
+
+    func clearRating() {
+        ratingModel.rating = 0
+    }
 }
 
 struct RatingButton: View {
@@ -28,7 +32,11 @@ struct RatingButton: View {
             Image(systemName: viewModel.ratingModel.rating >= index ? "star.fill" : "star")
                 .foregroundColor(.yellow)
                 .onTapGesture {
-                    viewModel.updateRating(index)
+                    if (index == viewModel.ratingModel.rating) {
+                        viewModel.clearRating()
+                    } else {
+                        viewModel.updateRating(index)
+                    }
                 }
         }
 }
