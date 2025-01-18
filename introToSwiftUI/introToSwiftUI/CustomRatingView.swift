@@ -34,9 +34,9 @@ struct RatingButton: View {
     
     var body: some View {
         Image(systemName: viewModel.ratingModel.rating >= index ? iconActive : iconInactive)
-            .resizable()
-            .frame(width: 24.0, height: 24.0)
-            .frame(maxWidth: 40.0, maxHeight: 40.0)
+//            .resizable()
+//            .frame(width: 24.0, height: 24.0)
+//            .frame(maxWidth: 40.0, maxHeight: 40.0)
             .foregroundColor(strokeIconColor)
             .onTapGesture {
                 if index == viewModel.ratingModel.rating {
@@ -86,7 +86,7 @@ struct RatingGroup: View {
                     Text(maxText)
                 }
             }
-            .padding(.top, 16.0)
+            .padding(.top, 8.0)
         }
     }
 }
