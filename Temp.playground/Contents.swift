@@ -62,6 +62,9 @@ f *= 2
 
 //divide valor na variavel
 f /= 4
+ 
+ 
+ 
 
 //MARK: outras operações matematicas complexas - precisa do import Foundation
 
@@ -326,3 +329,30 @@ print(a[0])
 a[0] = 100
 
 print(a[0])
+
+
+
+let sentence = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown "
+
+func splitByLetterCount(_ string: String, count: Int) -> [String] {
+    var result: [String] = []
+    var currentSubstring = ""
+
+    for char in string {
+        if currentSubstring.count + 1 <= count {
+            currentSubstring.append(char)
+        } else {
+            result.append(currentSubstring)
+            currentSubstring = String(char)
+        }
+    }
+
+    if !currentSubstring.isEmpty {
+        result.append(currentSubstring)
+    }
+
+    return result
+}
+
+let splitSentences = splitByLetterCount(sentence, count: 100)
+print(splitSentences)

@@ -26,9 +26,10 @@ struct CustomChip: View {
         .padding(.vertical, 4)
         .padding(.leading, 4)
         .padding(.trailing, 10)
+        .frame(height: 40)
         .foregroundColor(isSelected ? .white : .blue)
         .background(isSelected ? Color.blue : Color.white)
-        .cornerRadius(20)
+        .cornerRadius(999)
         .overlay(
             RoundedRectangle(cornerRadius: 20)
                 .stroke(Color.blue, lineWidth: 1.5)

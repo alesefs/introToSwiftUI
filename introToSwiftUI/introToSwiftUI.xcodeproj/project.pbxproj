@@ -20,6 +20,7 @@
 		F065F0392BED3FC100B1F063 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = F065F0382BED3FC100B1F063 /* Utils.swift */; };
 		F065F03B2BED9BE800B1F063 /* CustomFeedbackScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = F065F03A2BED9BE800B1F063 /* CustomFeedbackScreen.swift */; };
 		F06DCFE32C4955BD002664CF /* CompareEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06DCFE22C4955BD002664CF /* CompareEnums.swift */; };
+		F083C5CE2D28235C00B027DA /* CustomChipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F083C5CD2D28235C00B027DA /* CustomChipView.swift */; };
 		F0906A432B9E6BC600DAC4E8 /* introToSwiftUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0906A422B9E6BC600DAC4E8 /* introToSwiftUIApp.swift */; };
 		F0906A452B9E6BC600DAC4E8 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0906A442B9E6BC600DAC4E8 /* ContentView.swift */; };
 		F0906A472B9E6BC700DAC4E8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F0906A462B9E6BC700DAC4E8 /* Assets.xcassets */; };
@@ -45,6 +46,7 @@
 		F065F0382BED3FC100B1F063 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		F065F03A2BED9BE800B1F063 /* CustomFeedbackScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomFeedbackScreen.swift; sourceTree = "<group>"; };
 		F06DCFE22C4955BD002664CF /* CompareEnums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompareEnums.swift; sourceTree = "<group>"; };
+		F083C5CD2D28235C00B027DA /* CustomChipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomChipView.swift; sourceTree = "<group>"; };
 		F0906A3F2B9E6BC600DAC4E8 /* introToSwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = introToSwiftUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0906A422B9E6BC600DAC4E8 /* introToSwiftUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = introToSwiftUIApp.swift; sourceTree = "<group>"; };
 		F0906A442B9E6BC600DAC4E8 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -117,6 +119,7 @@
 				F054E3742BF9A094001313B4 /* CustomFeedbackB.swift */,
 				F0CCA6DA2C12218E007CAA7F /* CustomMarqueeText.swift */,
 				F0371D992C1CA77E0040E1A5 /* CustomNavigationRouter.swift */,
+				F083C5CD2D28235C00B027DA /* CustomChipView.swift */,
 			);
 			path = introToSwiftUI;
 			sourceTree = "<group>";
@@ -208,6 +211,7 @@
 				F046208C2C1A5B3D005680CF /* Screen1.swift in Sources */,
 				F01B3AA22BEC131E00944374 /* CustomCard.swift in Sources */,
 				F0155CC42BF663B100F2168B /* CustomActionText.swift in Sources */,
+				F083C5CE2D28235C00B027DA /* CustomChipView.swift in Sources */,
 				F0906A432B9E6BC600DAC4E8 /* introToSwiftUIApp.swift in Sources */,
 				F0BEF81B2D08D3F000CCDE34 /* CustomChip.swift in Sources */,
 				F0155CC22BF6538C00F2168B /* CustomAction.swift in Sources */,
