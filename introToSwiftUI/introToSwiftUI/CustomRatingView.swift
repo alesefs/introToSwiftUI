@@ -29,26 +29,26 @@ struct RatingButton: View {
     var iconActive: String
     var iconInactive: String
     var strokeIconColor: Color
-    var changeRating: (Int) -> Void
-    let maxIndex = 5
+    var changeRating: ((Int) -> Void)? = nil
     
     var body: some View {
         Image(systemName: viewModel.ratingModel.rating >= index ? iconActive : iconInactive)
-//            .resizable()
-//            .frame(width: 24.0, height: 24.0)
-//            .frame(maxWidth: 40.0, maxHeight: 40.0)
+        //            .resizable()
+        //            .frame(width: 24.0, height: 24.0)
+        //            .frame(maxWidth: 40.0, maxHeight: 40.0)
             .foregroundColor(strokeIconColor)
             .onTapGesture {
                 if index == viewModel.ratingModel.rating {
                     viewModel.clearRating()
-                    changeRating(0)
+                    if let changeRating {
+                        changeRating(0)
+                    }
                 } else {
                     viewModel.updateRating(index)
-                    changeRating(index)
+                    if let changeRating {
+                        changeRating(index)
+                    }
                 }
-            }
-            .if(index < maxIndex) { view in
-                view.padding(.trailing, 8.0)
             }
     }
 }
@@ -60,12 +60,15 @@ struct RatingGroup: View {
     var iconActive: String = "star.fill"
     var iconInactive: String = "star"
     var strokeIconColor: Color = .orange
-    var changeRating: (Int) -> Void
+    var changeRating: ((Int) -> Void)? = nil
+    
+    private let maxIndex = 5
     
     var body: some View {
         VStack(spacing: 0) {
             HStack(spacing: 0) {
-                ForEach(1...5, id: \.self) { index in
+                Spacer().frame(width: 16.0, height: 10.0).background(Color.red)
+                ForEach(1...maxIndex, id: \.self) { index in
                     RatingButton(
                         viewModel: viewModel,
                         index: index,
@@ -74,37 +77,41 @@ struct RatingGroup: View {
                         strokeIconColor: strokeIconColor,
                         changeRating: changeRating
                     )
+                    if(index < maxIndex) {
+                        Spacer().frame(width: 16.0, height: 10.0).background(Color.red)
+                    }
+                    
                 }
+                Spacer().frame(width: 16.0, height: 10.0).background(Color.red)
             }
             
-            HStack {
-                if let minText {
-                    Text(minText)
+            if (minText != nil && maxText != nil) {
+                HStack {
+                    if let minText {
+                        Text(minText)
+                    }
+                    Spacer()
+                    if let maxText {
+                        Text(maxText)
+                    }
                 }
-                Spacer()
-                if let maxText {
-                    Text(maxText)
-                }
+                .padding(.top, 8.0)
             }
-            .padding(.top, 8.0)
         }
     }
 }
 #Preview {
     VStack (alignment: .center) {
-            RatingGroup(
-                minText: "min",
-                maxText: "max"
-            ){ rating in print("Rating: \(rating)") }
-            
+        RatingGroup()
+        
         Divider()
         
-            RatingGroup(
-                minText: "min",
-                maxText: "max",
-                iconActive: "heart.fill",
-                iconInactive: "heart",
-                strokeIconColor: .red
-            ){ rating in print("Rating: \(rating)") }
-        }
+        RatingGroup(
+            minText: "min",
+            maxText: "max",
+            iconActive: "heart.fill",
+            iconInactive: "heart",
+            strokeIconColor: .red
+        ){ rating in print("Rating: \(rating)") }
+    }
 }
