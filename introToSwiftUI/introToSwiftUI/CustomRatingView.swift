@@ -32,7 +32,9 @@ struct RatingButton: View {
     var changeRating: ((Int) -> Void)? = nil
     
     var body: some View {
-        Image(systemName: viewModel.ratingModel.rating >= index ? iconActive : iconInactive)
+        let isSelected = viewModel.ratingModel.rating >= index
+        
+        Image(systemName: isSelected ? iconActive : iconInactive)
         //            .resizable()
         //            .frame(width: 24.0, height: 24.0)
         //            .frame(maxWidth: 40.0, maxHeight: 40.0)
