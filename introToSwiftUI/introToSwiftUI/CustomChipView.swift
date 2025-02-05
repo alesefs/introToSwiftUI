@@ -83,8 +83,8 @@ struct ChipContainerView: View {
     var body: some View {
         var width = CGFloat.zero
         var height = CGFloat.zero
-        ScrollView (.vertical, showsIndicators: false) {
-            GeometryReader { geo in
+//        ScrollView (.vertical, showsIndicators: false) {
+//            GeometryReader { geo in
                 ZStack(alignment: .topLeading, content:{
                     ForEach(viewModel.chipArray) { data in
                         ChipView(systemImage: data.systemImage,
@@ -92,7 +92,7 @@ struct ChipContainerView: View {
                                  isSelected: data.isSelected)
                         .padding(.all, 5)
                         .alignmentGuide(.leading) { dimension in
-                            if (abs(width - dimension.width) > geo.size.width) {
+                            if (abs(width - dimension.width) > UIScreen.main.bounds.width) {
                                 width = 0
                                 height -= dimension.height
                             }
@@ -113,8 +113,8 @@ struct ChipContainerView: View {
                         }
                     }
                 })
-            }
-        }
+//            }
+//        }
     }
 }
 
@@ -134,7 +134,9 @@ struct CustomChipView: View {
             Text("Select Your Chips")
                 .font(.title)
                 .fontWeight(.bold)
-            ChipContainerView(viewModel: viewModel).frame(height: 120)
+            ChipContainerView(viewModel: viewModel)
+            Text("weqwedsffs")
+            ChipContainerView(viewModel: viewModel)
             Text("weqwedsffs")
             Spacer()
         }
